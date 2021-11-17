@@ -30,13 +30,13 @@ int i, j;
 FILE *satu, *dua;
 
 void jeda(int j){	
-	int i, k;
+    int i, k;
     for(i=0; i<j; i++)
-		k=i;
+	k=i;
 }
 
 struct daftar {
-	char nama[50], alamat[50], nomor[50];
+    char nama[50], alamat[50], nomor[50];
 } kontak;
 
 char hapus[50], nama[50];
@@ -54,16 +54,16 @@ void highlight(int, int);
 
 // fungsi UTAMA
 int main(){
-	hidecursor();
-	menu();
-	return 0;
+    hidecursor();
+    menu();
+    return 0;
 }
 
 void menu(){
-	system("COLOR 1");
-	// system("cls") berfungsi untuk menghapus layar
-	system("cls");
-	int i;
+    system("COLOR 1");
+    // system("cls") berfungsi untuk menghapus layar
+    system("cls");
+    int i;
     char ch;
     const char *menu[]= {"   Tambah Kontak","   Lihat Kontak","   Hapus Kontak","   Keluar"};
     system("cls");
@@ -90,13 +90,13 @@ void curser(int no){
     if(ch == '\r'){
         if(no == 4){
             if(count == 1)
-				tambah_kontak();
+                tambah_kontak();
             else if(count == 2)
-				lihat_kontak();
+                lihat_kontak();
             else if(count == 3)
-				hapus_kontak();
+                hapus_kontak();
             else
-				exit(0);
+                exit(0);
         }
     }
 }
@@ -142,26 +142,26 @@ void tambah_kontak(){
 	satu = fopen("daftarnama.dll", "a");
 
 	for(i=0; i<1; i++){
-		fflush(stdin);
-		printf("\n\n\n\n\n\t\t\t\t--------MENU MEMBUAT KONTAK--------\n\n");
-		printf("\t\t\tNAMA : ");
-		scanf("%[^\n]", &kontak.nama);
-		fflush(stdin);
-		printf("\n\t\t\tNOMOR : ");
-		scanf("%[^\n]", &kontak.nomor);
-		fflush(stdin);
-		printf("\n\t\t\tALAMAT : ");
-		scanf("%[^\n]", &kontak.alamat);
-		printf("\n");
-		fflush(stdin);
-		fwrite(&kontak, sizeof(kontak), 1, satu);
-		printf("\n\t\t\tMenyimpan kontak");
-		for(i=0; i<=6; i++){
-			jeda(100000000);
-           	printf(".");
-        }
-    	printf("\n");
-    	printf("\t\t\tBerhasil menambahkan kontak\n");				
+            fflush(stdin);
+            printf("\n\n\n\n\n\t\t\t\t--------MENU MEMBUAT KONTAK--------\n\n");
+            printf("\t\t\tNAMA : ");
+            scanf("%[^\n]", &kontak.nama);
+            fflush(stdin);
+            printf("\n\t\t\tNOMOR : ");
+            scanf("%[^\n]", &kontak.nomor);
+            fflush(stdin);
+            printf("\n\t\t\tALAMAT : ");
+            scanf("%[^\n]", &kontak.alamat);
+            printf("\n");
+            fflush(stdin);
+            fwrite(&kontak, sizeof(kontak), 1, satu);
+            printf("\n\t\t\tMenyimpan kontak");
+            for(i=0; i<=6; i++){
+                jeda(100000000);
+                printf(".");
+            }
+    	    printf("\n");
+    	    printf("\t\t\tBerhasil menambahkan kontak\n");				
 	}
 	printf("\n\t\t\tTekan ENTER untuk melanjutkan");
 	getch();
@@ -170,70 +170,70 @@ void tambah_kontak(){
 }
 
 void lihat_kontak(){	
-	system("cls");
-	system("COLOR 1F");
-	printf("\n\n\n\n\n\t\t\t\t\xB2\xB2\xB2\xB2\xB2\xB2\xB2 DAFTAR NAMA KONTAK \xB2\xB2\xB2\xB2\xB2\xB2\xB2\n\n");
-	for(i=97; i<=122; i++){
-		satu = fopen("daftarnama.dll", "r");
+    system("cls");
+    system("COLOR 1F");
+    printf("\n\n\n\n\n\t\t\t\t\xB2\xB2\xB2\xB2\xB2\xB2\xB2 DAFTAR NAMA KONTAK \xB2\xB2\xB2\xB2\xB2\xB2\xB2\n\n");
+    for(i=97; i<=122; i++){
+        satu = fopen("daftarnama.dll", "r");
         fflush(stdin);
-        if(satu == NULL){
-			printf("Tidak ada list kontak");
-			exit(0);
-		}
+	if(satu == NULL){
+            printf("Tidak ada list kontak");
+            exit(0);
+	}
         while(fread(&kontak, sizeof(kontak), 1, satu) == 1){
             if(kontak.nama[0] == i || kontak.nama[0] == i-32){
-			    printf("\n\t\t\tNAMA : %s\n", kontak.nama);
-			    printf("\t\t\tNOMOR : %s\n", kontak.nomor);
-			    printf("\t\t\tALAMAT : %s\n", kontak.alamat);
-			    i++;
+                printf("\n\t\t\tNAMA : %s\n", kontak.nama);
+                printf("\t\t\tNOMOR : %s\n", kontak.nomor);
+                printf("\t\t\tALAMAT : %s\n", kontak.alamat);
+                i++;
             }
         }
         fclose(satu);
     }
-	printf("\n");
-	printf("\n\t\t\tTekan ENTER untuk melanjutkan");
-	getch();
-	menu();
+    printf("\n");
+    printf("\n\t\t\tTekan ENTER untuk melanjutkan");
+    getch();
+    menu();
 }
 
 void hapus_kontak(){
-	system("cls");
-	system("COLOR 1F");
-	fflush(stdin);
-	printf("\n\n\n\n\n\t\t\t\t\xB2\xB2\xB2\xB2 MENU HAPUS KONTAK \xB2\xB2\xB2\xB2\n\n");
-	printf("\n\t\t\tMasukkan nama kontak yang akan dihapus : ");
-	scanf("%[^\n]", &hapus);
+    system("cls");
+    system("COLOR 1F");
+    fflush(stdin);
+    printf("\n\n\n\n\n\t\t\t\t\xB2\xB2\xB2\xB2 MENU HAPUS KONTAK \xB2\xB2\xB2\xB2\n\n");
+    printf("\n\t\t\tMasukkan nama kontak yang akan dihapus : ");
+    scanf("%[^\n]", &hapus);
 		
-	satu = fopen("daftarnama.dll", "r");
-	dua = fopen("ubah.dat", "w");
+    satu = fopen("daftarnama.dll", "r");
+    dua = fopen("ubah.dat", "w");
 		
-	if(strcmp(hapus, kontak.nama) == 0){
-		while( fread(&kontak, sizeof(kontak), 1, satu)!= 0){
-			if(strcmp(hapus, kontak.nama)!=0)
-    	        fwrite(&kontak, sizeof(kontak), 1, dua);
-			}
-    	fclose(satu);
-       	fclose(dua);
+    if(strcmp(hapus, kontak.nama) == 0){
+        while( fread(&kontak, sizeof(kontak), 1, satu)!= 0){
+            if(strcmp(hapus, kontak.nama)!=0)
+                fwrite(&kontak, sizeof(kontak), 1, dua);
+	}
+        fclose(satu);
+        fclose(dua);
         
-       	remove("daftarnama.dll");
-       	rename("ubah.dat", "daftarnama.dll");
+        remove("daftarnama.dll");
+        rename("ubah.dat", "daftarnama.dll");
 		
-		printf("\n\t\t\tSedang menghapus kontak");
-		for(i=0; i<=6; i++){
-        	jeda(100000000);
-      		printf(".");
+        printf("\n\t\t\tSedang menghapus kontak");
+        for(i=0; i<=6; i++){
+            jeda(100000000);
+            printf(".");
        	}
         printf("\n\n\n\t\t\tBerhasil! Nama telah dihapus\n\n");
     }
     else{
         printf("\n\t\t\tSedang menghapus kontak");
-		for(i=0; i<=6; i++){
-        	jeda(100000000);
-	  		printf(".");
-		}
+	for(i=0; i<=6; i++){
+            jeda(100000000);
+            printf(".");
+        }
     	printf("\n\t\t\tERROR ! nama kontak tidak terdaftar");
         exit(0);
-	}
+    }
 		
     printf("\t\t\tTekan ENTER untuk melanjutkan");
     getch();
@@ -246,7 +246,7 @@ void window(int a, int b, int c, int d){
 	system("COLOR 4");
 
 	// garis vertikal
-    for (i=a; i<=b; i++){
+    for(i=a; i<=b; i++){
         gotoxy(i, 17);
         printf("\xcd");
         gotoxy(i, 19);
