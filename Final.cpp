@@ -257,7 +257,7 @@ void window(int a, int b, int c, int d){
         printf("\xcd");
     }
 
-	//vertikal menu bagian kiri
+    //vertikal menu bagian kiri
     gotoxy(a, 17);
     printf("\xc9");
     gotoxy(a, 18);
@@ -273,7 +273,7 @@ void window(int a, int b, int c, int d){
     gotoxy(b, 19);
     printf("\xbc");
 
-	// garis vertikal kiri kanan void menu()
+    // garis vertikal kiri kanan void menu()
     for(i=c; i<=d; i++){
         gotoxy(a, i);
         printf("\xba");
