@@ -32,7 +32,7 @@ FILE *satu, *dua;
 void jeda(int j){	
     int i, k;
     for(i=0; i<j; i++)
-	k=i;
+	k = i;
 }
 
 struct daftar {
