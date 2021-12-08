@@ -10,6 +10,7 @@ using namespace std;
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
 
+
 COORD coord = {0, 0};
 void gotoxy(int x,int y){ // x koordinat x, y koordinat y
     coord.X = x;
